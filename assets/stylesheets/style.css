@@ -6,8 +6,8 @@
     --color-muted: #8C7B6B;
 
     /* Fonts */
-    --font-heading: "Caveat", cursive;
-    --font-body: "Playpen Sans", cursive;
+    --font-heading: "Playpen Sans";
+    --font-body: "Playpen Sans";
 
     /* Spacing scale */
     --space-xs: 8px;
@@ -61,8 +61,69 @@ ul {
 }
 
 /* Common Sections*/
-#header {}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) var(--space-lg);
+    border-bottom: 1px solid var(--color-muted);
+}
 
-#footer {}
+#hero-section {
+    padding: var(--space-lg) 0;
+}
 
-#sidebar {}
+#hero-section h1 {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+#hero-section h1 span {
+    color: var(--color-accent)
+}
+
+#hero-section p {
+    font-size: 1.2rem;
+    color: var(--color-muted);
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+}
+
+nav {
+    display: flex;
+    gap: var(--space-md);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+}
+
+.main-logo {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+nav a {
+    color: var(--color-text);
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--color-accent);
+}
+
+nav a.active {
+    color: var(--color-accent);
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-accent);
+    text-underline-offset: 6px;
+    text-decoration-style: wavy;
+}
