@@ -1,8 +1,26 @@
+:root {
+    /* Colors */
+    --color-bg: #F5EFE4;
+    --color-text: #1E1B16;
+    --color-accent: #D98E3E;
+    --color-muted: #8C7B6B;
+
+    /* Fonts */
+    --font-heading: "Caveat", cursive;
+    --font-body: "Playpen Sans", cursive;
+
+    /* Spacing scale */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 48px;
+}
+
 /* Global Settings */
 * {
     margin: 0px;
     padding: 0px;
-    box-sizing:border-box;
+    box-sizing: border-box;
 }
 
 a {
@@ -12,6 +30,7 @@ a {
 ul {
     list-style: none;
 }
+
 /* Reusable Classes*/
 .w-100 {
     width: 100%;
@@ -21,7 +40,7 @@ ul {
     text-align: center;
 }
 
-.flex{
+.flex {
     display: flex;
 }
 
@@ -42,14 +61,8 @@ ul {
 }
 
 /* Common Sections*/
-#header {
+#header {}
 
-}
-#footer {
+#footer {}
 
-}
-
-#sidebar {
-
-}
-
+#sidebar {}
