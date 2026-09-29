@@ -98,15 +98,16 @@ header {
     padding: 0 var(--space-lg);
 }
 
-.hero-showcase {
+
+.page-hero {
     padding: var(--space-lg) 0;
 }
 
-.hero-showcase h1 {
+.page-hero h1 {
     font-size: 3rem;
 }
 
-.hero-showcase p {
+.page-hero p {
     color: var(--color-muted);
     line-height: 1.6;
 }
@@ -123,6 +124,20 @@ header {
     max-width: 60ch;
     line-height: 1.6;
 }
+
+.skill-list {
+    margin-top: var(--space-lg);
+}
+
+.skill-list h3 {
+    font-size: 1.8rem;
+    margin-bottom: var(--space-sm);
+}
+
+.skill-list ul {
+    line-height: 1.8;
+}
+
 
 .featured-grid {
     display: grid;
@@ -158,6 +173,42 @@ header {
 
 #featured-cards h2 {
     margin-bottom: var(--space-md);
+}
+
+.contact-form {
+    margin-top: var(--space-lg);
+    max-width: 600px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: var(--space-xs);
+    font-family: var(--font-body);
+    border: 1px solid var(--color-muted);
+    border-radius: 6px;
+    background-color: transparent;
+}
+
+.contact-form input[type="submit"] {
+    width: fit-content;
+    padding: var(--space-xs) var(--space-md);
+    border: 1px solid var(--color-accent);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    cursor: pointer;
+}
+
+.contact-form input[type="submit"]:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
 }
 
 body {
