@@ -75,6 +75,29 @@ header {
     align-items: center;
 }
 
+footer {
+    border-top: 1px solid var(--color-muted);
+}
+
+.footer-content {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: var(--space-md) var(--space-lg);
+    text-align: center;
+}
+
+.footer-name p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+}
+
 #hero-section {
     padding: var(--space-lg) 0;
 }
