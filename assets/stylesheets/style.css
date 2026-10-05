@@ -370,3 +370,29 @@ nav a.active {
     background-color: var(--color-accent);
     color: var(--color-bg);
 }
+
+.hero-status {
+    display: inline-block;
+    margin-top: var(--space-md);
+    padding: var(--space-xs) var(--space-md);
+    border: 1px dashed var(--color-muted);
+    border-radius: 20px;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+#hero-section {
+    border-bottom: 1px dashed var(--color-muted);
+}
+
+.hero-status span {
+    color: var(--color-accent);
+    margin-right: var(--space-xs);
+}
+
+.hero-note {
+    margin-top: var(--space-xs);
+    font-family: "Caveat", cursive;
+    font-size: 1.3rem;
+    color: var(--color-muted);
+}
