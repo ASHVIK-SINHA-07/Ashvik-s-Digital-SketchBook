@@ -3,3 +3,4 @@ It brings together projects, experiments, lessons, and failures in one evolving 
 The website is designed to grow alongside its creator, with new projects, logs, experiments, photography, and skills added over time.  
 Future versions can include dynamic project showcases, an interactive learning/build log, richer animations, real project demos, and deeper integration with Ashvik’s development workflow.  
 Ultimately, **The Digital Desk** aims to become a living record of his growth — part portfolio, part laboratory, and part digital archive of everything he builds and learns.
+~~ Ashvik Sinha
