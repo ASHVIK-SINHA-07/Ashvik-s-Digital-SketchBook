@@ -188,7 +188,7 @@ nav a.active {
 }
 
 .hero-status span {
-    color: var(--color-accent);
+    color: red;
     margin-right: var(--space-xs);
 }
 
