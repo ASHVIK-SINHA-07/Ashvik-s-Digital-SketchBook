@@ -110,8 +110,8 @@ Additional technologies may be introduced as the project evolves.
 This project is being developed incrementally. The following roadmap represents my intended direction.
 
 ### Phase 1 — Foundation & Design
-- [ ] Audit and organize the existing codebase.
-- [ ] Establish a consistent design system.
+- [✅] Audit and organize the existing codebase.
+- [✅] Establish a consistent design system.
 - [ ] Create wireframes and high-fidelity UI designs in Figma.
 - [ ] Finalize typography, colors and spacing.
 - [ ] Design desktop and mobile layouts.
