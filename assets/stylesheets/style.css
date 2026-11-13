@@ -15,6 +15,12 @@
     --space-sm: 16px;
     --space-md: 24px;
     --space-lg: 48px;
+
+    /* Motion */
+    --motion-fast: 180ms;
+    --motion-slow: 320ms;
+    --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --shadow-lift: 0 10px 24px rgba(30, 27, 22, 0.1);
 }
 
 /* 02. Reset and global styles */
@@ -225,10 +231,10 @@ nav a.active {
 }
 
 .quick-link a {
+    display: inline-block;
     padding: var(--space-xs) var(--space-md);
     border: 1px solid var(--color-accent);
     border-radius: 8px;
-    transition: all 0.2s ease;
 }
 
 .quick-link a:hover {
@@ -287,7 +293,6 @@ nav a.active {
     padding: var(--space-xs) var(--space-md);
     border: 1px solid var(--color-accent);
     border-radius: 8px;
-    transition: all 0.2s ease;
 }
 
 .log-link a:hover {
@@ -379,7 +384,6 @@ nav a.active {
     color: var(--color-text);
     font-family: var(--font-body);
     cursor: pointer;
-    transition: all 0.2s ease;
 }
 
 .contact-form input[type="submit"]:hover {
@@ -422,13 +426,131 @@ nav a.active {
 }
 
 /* 10. Motion and animations */
-.featured-card {
-    transition: transform 0.2s ease, border-color 0.2s ease;
+nav a,
+.footer-links a,
+.featured-card a {
+    position: relative;
+    width: fit-content;
+    transition: color var(--motion-fast) ease;
 }
 
-.featured-card:hover {
+nav a:not(.active)::after,
+.footer-links a::after,
+.featured-card a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    left: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--motion-slow) var(--motion-ease);
+    pointer-events: none;
+}
+
+nav a:focus-visible::after,
+.footer-links a:focus-visible::after,
+.featured-card a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+.featured-card,
+.skill-list {
+    transition: transform var(--motion-slow) var(--motion-ease),
+        box-shadow var(--motion-slow) ease,
+        border-color var(--motion-fast) ease,
+        background-color var(--motion-fast) ease;
+}
+
+.featured-card:focus-within {
     transform: translateY(-5px);
     border-color: var(--color-accent);
+    box-shadow: var(--shadow-lift);
+}
+
+.skill-list::before {
+    transform-origin: left;
+    transition: transform var(--motion-slow) var(--motion-ease);
+}
+
+.quick-link a,
+.log-link a,
+.contact-form input[type="submit"] {
+    transition: transform var(--motion-fast) var(--motion-ease),
+        background-color var(--motion-fast) ease,
+        color var(--motion-fast) ease,
+        box-shadow var(--motion-fast) ease;
+}
+
+.quick-link a:focus-visible,
+.log-link a:focus-visible,
+.contact-form input[type="submit"]:focus-visible {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    box-shadow: 0 4px 12px rgba(30, 27, 22, 0.12);
+}
+
+.quick-link a:active,
+.log-link a:active,
+.contact-form input[type="submit"]:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+.footer-links i {
+    transition: transform var(--motion-slow) var(--motion-ease);
+}
+
+.contact-form input,
+.contact-form textarea {
+    transition: border-color var(--motion-fast) ease,
+        background-color var(--motion-fast) ease,
+        box-shadow var(--motion-fast) ease;
+}
+
+/* Pointer-only movement avoids sticky hover states on touch screens. */
+@media (hover: hover) and (pointer: fine) {
+
+    nav a:hover::after,
+    .footer-links a:hover::after,
+    .featured-card a:hover::after {
+        transform: scaleX(1);
+    }
+
+    .featured-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--color-accent);
+        background-color: rgba(255, 255, 255, 0.3);
+        box-shadow: var(--shadow-lift);
+    }
+
+    .skills-grid .skill-list:hover {
+        transform: translateY(-5px) rotate(0deg);
+        border-color: var(--color-accent);
+        background-color: rgba(255, 255, 255, 0.45);
+        box-shadow: var(--shadow-lift);
+    }
+
+    .skill-list:hover::before {
+        transform: scaleX(1.6);
+    }
+
+    .quick-link a:hover,
+    .log-link a:hover,
+    .contact-form input[type="submit"]:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 12px rgba(30, 27, 22, 0.12);
+    }
+
+    .footer-links a:hover i {
+        transform: translateY(-3px) rotate(-8deg);
+    }
+
+    .contact-form input:not([type="submit"]):hover,
+    .contact-form textarea:hover {
+        border-color: var(--color-accent);
+    }
 }
 
 /* 11. Responsive layouts */
@@ -450,10 +572,18 @@ nav a.active {
 }
 
 /* 12. Accessibility */
+a:focus-visible,
+.contact-form input[type="submit"]:focus-visible {
+    outline: 2px dashed var(--color-text);
+    outline-offset: 6px;
+}
+
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--color-accent);
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 3px rgba(217, 142, 62, 0.18);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -467,10 +597,17 @@ nav a.active {
         scroll-behavior: auto !important;
     }
 
-    .featured-card:hover {
-        transform: none;
-    }
-
+    .featured-card:hover,
+    .featured-card:focus-within,
+    .skills-grid .skill-list:hover,
+    .quick-link a:hover,
+    .quick-link a:active,
+    .log-link a:hover,
+    .log-link a:active,
+    .contact-form input[type="submit"]:hover,
+    .contact-form input[type="submit"]:active,
+    .footer-links a:hover i,
+    .skill-list:hover::before,
     .skills-grid .skill-list:nth-child(1),
     .skills-grid .skill-list:nth-child(2),
     .skills-grid .skill-list:nth-child(3) {

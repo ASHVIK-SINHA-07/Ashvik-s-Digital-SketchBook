@@ -40,27 +40,43 @@ function initScrollAnimations() {
         return;
     }
 
+    const animations = new Set();
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
+        entries.filter((entry) => entry.isIntersecting).forEach((entry, index) => {
 
             // Keep content visible by default, including when animations are unavailable.
             if (!motionPreference.matches) {
-                entry.target.animate(
+                const animation = entry.target.animate(
                     [
-                        { opacity: 0.6, transform: "translateY(12px)" },
-                        { opacity: 1, transform: "translateY(0)" }
+                        { opacity: 0.6, translate: "0 12px" },
+                        { opacity: 1, translate: "0 0" }
                     ],
-                    { duration: 350, easing: "ease-out" }
+                    {
+                        duration: 450,
+                        delay: Math.min(index * 65, 195),
+                        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+                        fill: "backwards"
+                    }
                 );
+                animations.add(animation);
+                animation.onfinish = animation.oncancel = () => animations.delete(animation);
             }
 
             observer.unobserve(entry.target);
         });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll(".featured-card, .log-link").forEach((element) => {
+    document.querySelectorAll(
+        "#hero-section > *, .page-hero > *, .featured-card, .skill-list, .log-link, .quick-link"
+    ).forEach((element) => {
         observer.observe(element);
+    });
+
+    motionPreference.addEventListener("change", (event) => {
+        if (!event.matches) return;
+        observer.disconnect();
+        animations.forEach((animation) => animation.cancel());
+        animations.clear();
     });
 }
 
